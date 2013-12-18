@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<menu title="Umbrelaya - The Hunt">
+	<button type="menu" show="Singleplayer" goto="df_game" x="-200" y="-100"/>
+	<button type="menu" show="Options" goto="options.xml" x="-200" y="-32"/>
+</menu>

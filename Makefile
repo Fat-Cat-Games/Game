@@ -1,4 +1,4 @@
-PROGRAM = Game
+PROGRAM = Umbrelaya
 
 # Compiler
 CXX := g++

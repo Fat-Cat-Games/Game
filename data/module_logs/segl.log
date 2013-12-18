@@ -1,6 +1,4 @@
 Initializing render module-8 segl...
-Successfully loaded shader shaders/glsl 430/default
-Successfully loaded shader shaders/mesh
-Loading image 'engine/error.bmp'...
-Failed to open file 'engine/error.bmp"
-Error with file engine/error.bmp
+OpenGL Assertion Failed: ..\..\src\gl\Shader.cpp: 342: 500 invalid enumerant
+Loading image 'engine/error.png'...
+Successfully opened file 'engine/error.png"

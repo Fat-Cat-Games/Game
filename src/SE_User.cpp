@@ -60,7 +60,7 @@ uint DF_Game::User_Initialize( const std::vector<std::string>& mArgs )
 	SE_Menu::Set_Load_Menu( User_Load_Menu );
 
 	// Start on title screen
-	S_Engine::Event_Add_Engine( new SE_Events::Event_Var<std::string>( SE_Modules::Mod_GUI, Event_GUI::EVENT_MENU_LOAD, "title" ) );
+	S_Engine::Event_Add_Engine( new SE_Events::Event_Var<std::string>( SE_Modules::Mod_GUI, Event_GUI::EVENT_MENU_LOAD, "title.xml" ) );
 			
 
 	return SE_SUCCESS;

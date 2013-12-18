@@ -1,4 +1,5 @@
 Initializing module-64 menu...
-Load Menu Start: title
+Load Menu Start: title.xml
+Loading XML File: gui/menus/title.xml... Success
 Load Menu Waiting
-Finished Menu: title
+Finished Menu: title.xml

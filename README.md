@@ -3,7 +3,7 @@ Plot Summery
 
 You start out robbing a tomb (You play as a tomb raider) With your partner in crime, Elliot. As you are rummaging through the tomb, You stumble apon a locked chest, You pick the lock and take a look inside. There's a few journals and a map. You quickly look at the map as it is labelled "Umbrelaya". Elliot comes over to see what you have found. He look's at the map. He as well is thinking the same thing as "Your player". You try to tell him that it cant be the map. he tells him "Do you have any idea of how many people have never returned from looking for it? You suggest burning it. You reach for your torch. Elliot quickly grabs his dagger and thrusts it into your stomach.  Elliot, Drunk with the thought of rich's. Walks out of the tomb. Leaving you to die.
 
-Map Size- 1000x1000 meters
+Map Size- 5000x5000 meters
 
 Houses
 ------
