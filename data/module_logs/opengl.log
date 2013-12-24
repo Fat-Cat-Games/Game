@@ -1,7 +1,7 @@
 Initializing render module-2 opengl...
-Set GL Intface Ver 110
-OpenGL Version: 1.1.0
-GLSL Version: 
-OpenGL Vendor: Microsoft Corporation
-OpenGL Renderer: GDI Generic
-GLEW Version: 1.9.0
+Set GL Intface Ver 300
+OpenGL Version: 4.3.0 NVIDIA 319.32
+GLSL Version: 4.30 NVIDIA via Cg compiler
+OpenGL Vendor: NVIDIA Corporation
+OpenGL Renderer: GeForce GT 545/PCIe/SSE2
+GLEW Version: 1.8.0

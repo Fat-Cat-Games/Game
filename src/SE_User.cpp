@@ -30,6 +30,7 @@
 #include "SE/physics/Physics.hpp"
 #include "SE/utility/UID.hpp"
 #include "SE/cbs/HI_Lang.hpp"
+#include "Map.hpp"
 
 
 uint DF_Game::Module_Hook()
@@ -47,6 +48,8 @@ uint DF_Game::Module_Hook()
 	SE_GUI::Register_Module();
 	SE_Physics::Register_Module();
 	SE_HIL::Register_Module();
+
+	UM_Map::Register_Module();
 
 	SE_GUI::Set_GUI_Background( User_GUI_Background );
 
