@@ -1,1 +1,1 @@
-START /D "" "bin\Umbrelaya_Release.exe"
+START "" "bin\Umbrelaya_Release.exe"

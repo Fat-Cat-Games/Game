@@ -1,8 +1,12 @@
 #include "Map.hpp"
 #include "SE/module/Module.hpp"
 #include "SE/gl/se_gl.hpp"
+#include "SE/render/Camera.hpp"
 #include "SE/app/Window.hpp"
 #include "SE/cbs/HI_Lang.hpp"
+
+#include "SE/physics/Physics.hpp"
+#include "SE/physics/Object.hpp"
 
 #define SIZE_X 24
 #define SIZE_Y 10
@@ -24,7 +28,8 @@ namespace UM_Map
 	// Global
 	
 	uchar Map_Grid[ SIZE_Z ][ SIZE_Y ][ SIZE_X ];
-
+	
+	SE_Physics::Obj_ID Test_Obj = NULL;
 
 	// Functions
 	void Render_Cube( uint x, uint y, uint z );
@@ -36,6 +41,8 @@ namespace UM_Map
 	uint Cleanup();
 
 	uint Get_Resources( const std::vector<std::string>& mArgs );
+	void Create_Physics();
+	void Create_Block( Vector3f& Pos, uint Height, uchar Type );
 }
 using namespace UM_Map;
 
@@ -48,28 +55,42 @@ void UM_Map::Turn( float d )
 }
 
 
-float Trans_X = 0.f;
+//float Trans_X = 0.f;
 void UM_Map::Render()
 {
-	Trans_X -= 0.01f;
+//	SE_Render_Camera::Position(NULL).x() -= 0.01f;
 
-	segl_Set_Frustum_Far( 16 );
+	segl_Set_Frustum_Far( 256 );
 	segl_Switch_3D();
 	glPushMatrix();
 
-//	glTranslatef( -SE_Window::Get_W() / 2.f, -SE_Window::Get_H() / 2.f, 0 );
-//	glTranslatef( -SIZE_X / 2.f, -SIZE_Y / 2.f, -SIZE_Z / 2.f );
+	SE_Render_Camera::Mult( NULL );
 
-//	glRotatef( 30, 0, 0, 1 );
+	// Draw character
+	if( Test_Obj )
+	{
+		glPushMatrix();
+		segl_Disable( GL_TEXTURE_2D );
 
-	glTranslatef( Trans_X, SIZE_Y - 2.5, -2 );
-	glRotatef( -180, 1, 0, 0 );
-	glRotatef( 15, 1, 0, 0 );
+		Vector3f& Char_Pos = SE_Physics::Pos3D(Test_Obj);
+
+		glTranslatef( -0.125f, -.5f, -0.125f / 2.f );
+
+		glBegin( GL_QUADS );
+			glVertex3f( Char_Pos.x(), Char_Pos.y(), Char_Pos.z() );
+			glVertex3f( Char_Pos.x() + .25f, Char_Pos.y(), Char_Pos.z() );
+			glVertex3f( Char_Pos.x() + .25f, Char_Pos.y() + 1, Char_Pos.z() );
+			glVertex3f( Char_Pos.x(), Char_Pos.y() + 1, Char_Pos.z() );
+		glEnd();
+
+		glPopMatrix();
+	}
 
 	glColor4f( 1, 1, 1, 1 );
-	segl_Use_Texture( Res::Tex_Ground );
+	glTranslatef( -SIZE_X / 2.f, -SIZE_Y / 2.f, -SIZE_Z / 2.f );
 
-	glTranslatef( -0.5f, -0.5f, -0.5f );
+
+	segl_Use_Texture( Res::Tex_Ground );
 
 	for( uint z = 0; z < SIZE_Z; z++ ){
 	for( uint y = 0; y < SIZE_Y; y++ ){
@@ -100,10 +121,10 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 			glColor3f( 0.9f, 0.9f, 0.9f );
 
 		glBegin( GL_QUADS );
-			glTexCoord2f(0,0);	glVertex3f( 0, 1, 0 );
-			glTexCoord2f(1,0);	glVertex3f( 1, 1, 0 );
-			glTexCoord2f(1,1);	glVertex3f( 1, 0, 0 );
-			glTexCoord2f(0,1);	glVertex3f( 0, 0, 0 );
+			glTexCoord2f(0,1);	glVertex3f( 0, 1, 0 );
+			glTexCoord2f(1,1);	glVertex3f( 1, 1, 0 );
+			glTexCoord2f(1,0);	glVertex3f( 1, 0, 0 );
+			glTexCoord2f(0,0);	glVertex3f( 0, 0, 0 );
 		glEnd();
 	}
 	// Top
@@ -145,10 +166,10 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 			glColor3f( 0.8f, 0.8f, 0.8f );
 
 		glBegin( GL_QUADS );
-			glTexCoord2f(0,0);	glVertex3f( 0, 1, 0 );
-			glTexCoord2f(1,0);	glVertex3f( 0, 1, 1 );
-			glTexCoord2f(1,1);	glVertex3f( 0, 0, 1 );
-			glTexCoord2f(0,1);	glVertex3f( 0, 0, 0 );
+			glTexCoord2f(0,1);	glVertex3f( 0, 1, 0 );
+			glTexCoord2f(1,1);	glVertex3f( 0, 1, 1 );
+			glTexCoord2f(1,0);	glVertex3f( 0, 0, 1 );
+			glTexCoord2f(0,0);	glVertex3f( 0, 0, 0 );
 		glEnd();
 	}
 	// Right
@@ -160,10 +181,10 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 			glColor3f( 0.8f, 0.8f, 0.8f );
 
 		glBegin( GL_QUADS );
-			glTexCoord2f(0,0);	glVertex3f( 1, 1, 0 );
-			glTexCoord2f(1,0);	glVertex3f( 1, 1, 1 );
-			glTexCoord2f(1,1);	glVertex3f( 1, 0, 1 );
-			glTexCoord2f(0,1);	glVertex3f( 1, 0, 0 );
+			glTexCoord2f(0,1);	glVertex3f( 1, 1, 0 );
+			glTexCoord2f(1,1);	glVertex3f( 1, 1, 1 );
+			glTexCoord2f(1,0);	glVertex3f( 1, 0, 1 );
+			glTexCoord2f(0,0);	glVertex3f( 1, 0, 0 );
 		glEnd();
 	}
 	
@@ -172,13 +193,93 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 }
 
 
-
+#include "SE/os/Input.hpp"
 void UM_Map::Update()
 {
+//	sePrintf( SEPRINT_INFO, "%f\n", SE_Thread::Get_DT() );
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_A ) )
+		SE_Physics::Apply_Force( Vector3f( -0.25f, 0, 0 ), Test_Obj );
 
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_D ) )
+		SE_Physics::Apply_Force( Vector3f( +0.25f, 0, 0 ), Test_Obj );
+
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_W ) )
+		SE_Physics::Apply_Force( Vector3f( 0, 0, +0.25f ), Test_Obj );
+
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_S ) )
+		SE_Physics::Apply_Force( Vector3f( 0, 0, -0.25f ), Test_Obj );
+
+	
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_K ) && 
+			abs( Get_Velocity3D( Test_Obj ).y() ) < 0.00001f )
+		SE_Physics::Apply_Force( Vector3f( 0, -10, 0 ), Test_Obj );
+
+
+	// Update Camera
+	Vector3f& Cam_Pos = SE_Render_Camera::Position(NULL);
+	Vector3f& Char_Pos = SE_Physics::Pos3D(Test_Obj);
+
+	Cam_Pos.x() -= ( Cam_Pos.x() + Char_Pos.x() ) * SE_Thread::Get_DT();
+	Cam_Pos.y() += ( Char_Pos.y() - Cam_Pos.y() ) * SE_Thread::Get_DT();
 }
 
+void UM_Map::Create_Physics()
+{
+	// start from highest down
+	for( uint z = 0; z < SIZE_Z; z++ ){
+	for( uint x = 0; x < SIZE_X; x++ )
+	{
+		std::vector< uint > Pos_Start, Pos_End;
+		uchar State = 0;//Map_Grid[z][0][x] != 0; // 0 = space, 1 = block
+		// Get height
+		for( uint y = 0; y < SIZE_Y; y++ )
+		{
+			if( Map_Grid[z][y][x] != 0 && State == 0 )
+			{
+				Pos_Start.push_back( y );
+				State = 1;
+			}
 
+			else if( Map_Grid[z][y][x] == 0 && State == 1 )
+			{
+				Pos_End.push_back( y );
+				State = 0;
+			}
+		}
+
+		if( Pos_Start.size() > Pos_End.size() ) // Ends at bottom
+			Pos_End.push_back( SIZE_Y );
+
+		// Got all blocks
+		Vector3f nPos;
+		for( uint i = 0; i < Pos_Start.size(); i++ )
+		{
+			sePrintf( SEPRINT_INFO, "\t( %u, %u ), %u - %u = %u\n", x, z, Pos_End[i], Pos_Start[i], Pos_End[i] - Pos_Start[i] );
+			nPos.Set( x, Pos_Start[i], z );
+			Create_Block( nPos, Pos_End[i] - Pos_Start[i], Map_Grid[z][Pos_Start[i]][x] );
+		}
+	}}
+}
+
+#include "SE/physics/Physics.hpp"
+void UM_Map::Create_Block( Vector3f& Pos, uint Height, uchar Type )
+{
+//	sePrintf( SEPRINT_DEBUG, "\tBlock (%g,%g,%g), %u\n", Pos.x(), Pos.y(), Pos.z(), Height );
+/*	Pos.y() -= Height / 2.f;
+	btTransform Trans; Trans.setIdentity();
+	Trans.setOrigin( Pos );
+
+	btVector3 Local_Inertia( 0, 0, 0 );
+
+	btBoxShape* Shape = new btBoxShape( btVector3(0.5f, Height / 2.f, 0.5f) );
+
+	btRigidBody* Body = SE_Physics::Make_Body( 0, Pos, Shape, 0, FILE_LINE );*/
+
+	Pos.y() -= SIZE_Y / 2.f;
+	Pos.z() -= SIZE_Z / 2.f;
+	Pos.x() -= SIZE_X / 2.f;
+	SE_Physics::Gen_Object( Pos, Vector3f( 1, Height, 1 ), 0, SE_PHYS_SHAPE_RECT );
+}
 
 // Module
 
@@ -202,6 +303,19 @@ uint UM_Map::Initialize( const std::vector<std::string>& mArgs )
 
 
 	Res::HIL_Test_Color = (Vector4f*)SE_HIL::Get( "test", "color" );
+
+	SE_Render_Camera::Position(NULL).Set( SIZE_X / 2.f, SIZE_Y / 2.f - 2.5, -4 );
+	SE_Render_Camera::Rotation(NULL).x() = -180;
+	SE_Render_Camera::Rotation(NULL).x() += 15;
+
+	SE_Physics::Set_World_Bound_Y( SIZE_Y );/// 2.f );
+	SE_Physics::Set_World_Bound_Z( SIZE_Z );/// 2.f );
+
+	SE_Physics::Set_Gravity( 10 );
+
+	Create_Physics();
+	Test_Obj = SE_Physics::Gen_Object( Vector3f( 0, SIZE_Y / 2.f - 4, -.5f ), Vector3f( 0.25f, 1, 0.25f ), 10.f, SE_PHYS_SHAPE_CAPSULE );
+	SE_Physics::Set_Upright( Test_Obj );
 
 	return SE_SUCCESS;
 }
@@ -228,6 +342,6 @@ void UM_Map::Register_Module()
 	S_Engine::Register_Module_Engine( m_Mod, S_Engine::Reg_Mod_Time::MED_LEVEL + 30, Initialize, Cleanup );
 	S_Engine::Register_Module_Render( m_Mod, S_Engine::Reg_Mod_Time::MED_LEVEL + 30, Get_Resources, NULL );
 
-	S_Engine::Register_Module_Thread_Render( Render, S_Engine::Module_Positions::POS_EARLY, 200 );
+	S_Engine::Register_Module_Thread_Render( Render, S_Engine::Module_Positions::POS_START + 5, 200 );
 	S_Engine::Register_Module_Thread_Logic( Update, S_Engine::Module_Positions::POS_EARLY, 32 );
 }

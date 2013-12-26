@@ -1,0 +1,29 @@
+TODO: A list of what needs to be acomplished for Viveret
+
+Terrain design
+options
+AI (Once im done with teh AI stats)
+Some attack animations
+and textures (If you can)
+
+What kind of terrain design / options are you looking for? I can implement some utility that I can pipe into a menu, and I can work on an in-game editor for the map.
+
+terrain design would be how to implement Caves and stuff into the game
+and maybe on how to do randomly generated villages
+Well, for now, I can work on random terrain.
+options would be like sound- Music- effects- dificulty
+
+So for the terrain, is it completely random, or are certain areas always the same?
+completlely
+what do you think it should be?
+How are we going to set pre-planned locations?
+I think most of the overworld should be pre-planned, with rogue areas random, and most caves / dungeons random.
+So villages for the story are static, but maybe some are random.
+Designated areas can be random.
+well. we could have like 4000 blocks preset
+Places that we don't need to be designed.
+then the rest behond that could be random
+I thought about that, but thats not as fun.
+so we should do the main spots pre-set. then the stuff inbetween random?
+Yes. But we can have some flexibility. Like a preset village can still be at a random height, on the terrain.
+And cave locations can be random, but they are still required and pre-set

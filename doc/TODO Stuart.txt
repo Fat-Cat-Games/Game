@@ -1,0 +1,6 @@
+I need an AI stats list - a list of stats and common abilities for anything living. So that means strength / HP / XP / DR / MP / endurance
+Research as much as possible all of the things that describe a creatures traits
+Then I need a few test creatures, maybe like 2 or 3.
+All filled out with all that info.
+I also need you to be able to use git, and my engine.
+
