@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<world show="Overworld" folder="overworld">
+	<sky open="true" time="true">
+		<color r="0.5" g="0.5" b="1"/>
+	</sky>
+	<biome type="grass" temp="75"/>
+</world>

@@ -15,7 +15,6 @@ options would be like sound- Music- effects- dificulty
 
 So for the terrain, is it completely random, or are certain areas always the same?
 completlely
-what do you think it should be?
 How are we going to set pre-planned locations?
 I think most of the overworld should be pre-planned, with rogue areas random, and most caves / dungeons random.
 So villages for the story are static, but maybe some are random.

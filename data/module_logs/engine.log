@@ -4,10 +4,11 @@ Initialized all modules
 Initializing threads...
 Initialized Threads
 Initializing user-space...
-Finished intializing, time: 2640.81 seconds
+Finished intializing, time: 2389.17 seconds
 
-Loading XML Fi
-e: gui/menus/title.xml... GL: New tex: 2
+GL: New tex: 1
+GL: New tex: 2
+GL: New tex: 4
 GL: New tex: 3
 Shutdown By Input
 Shutting down...
@@ -34,14 +35,15 @@ Cleaning module-1 window-XServer...
 Cleaning module-0 thread-boost...
 Cleaning module-0 debug-profiler...
 Profile stats:
-	se_printf (0x430a52): 120
+	se_printf (0x431152): 141
 Cleaning module-0 debug...
 Unfreed memory:
-	0x7f420c2e4010: shader
-	0x7f420c302ed0: shader
-	0x7f420c307500: file read stream buf
-	0x7f420c32f750: file read stream buf
-	0x7f420c362630: file read stream buf
+	0x7f0bac2e3440: shader
+	0x7f0bac2ffef0: shader
+	0x7f0bac304520: file read stream buf
+	0x7f0bac32c770: file read stream buf
+	0x7f0bac35f650: file read stream buf
+	0x7f0bac32d660: file read stream buf
 Cleaning module-0 uid...
 UID Deleting '_global'
 UID Deleting 'hil'

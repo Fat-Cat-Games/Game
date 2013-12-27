@@ -13,6 +13,10 @@
 #define SIZE_Z 2
 
 
+#define PLR_W	0.5f
+#define PLR_H	1.6f
+#define PLR_L	0.1f
+
 namespace UM_Map
 {
 	// Globals
@@ -20,6 +24,8 @@ namespace UM_Map
 	{
 		uint Tex_Ground = 0;
 		Vector4f* HIL_Test_Color = NULL;
+
+		uint Tex_AI = 0;
 	}
 
 	void Render();
@@ -70,17 +76,17 @@ void UM_Map::Render()
 	if( Test_Obj )
 	{
 		glPushMatrix();
-		segl_Disable( GL_TEXTURE_2D );
+		segl_Use_Texture( Res::Tex_AI );
 
 		Vector3f& Char_Pos = SE_Physics::Pos3D(Test_Obj);
 
-		glTranslatef( -0.125f, -.5f, -0.125f / 2.f );
+		glTranslatef( -PLR_W/2.f, -PLR_H/2.f, -PLR_L/2.f );
 
 		glBegin( GL_QUADS );
-			glVertex3f( Char_Pos.x(), Char_Pos.y(), Char_Pos.z() );
-			glVertex3f( Char_Pos.x() + .25f, Char_Pos.y(), Char_Pos.z() );
-			glVertex3f( Char_Pos.x() + .25f, Char_Pos.y() + 1, Char_Pos.z() );
-			glVertex3f( Char_Pos.x(), Char_Pos.y() + 1, Char_Pos.z() );
+			glTexCoord2f(0,0);	glVertex3f( Char_Pos.x(), Char_Pos.y(), Char_Pos.z() );
+			glTexCoord2f(1,0);	glVertex3f( Char_Pos.x() + PLR_W, Char_Pos.y(), Char_Pos.z() );
+			glTexCoord2f(1,1);	glVertex3f( Char_Pos.x() + PLR_W, Char_Pos.y() + PLR_H, Char_Pos.z() );
+			glTexCoord2f(0,1);	glVertex3f( Char_Pos.x(), Char_Pos.y() + PLR_H, Char_Pos.z() );
 		glEnd();
 
 		glPopMatrix();
@@ -193,27 +199,39 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 }
 
 
+
 #include "SE/os/Input.hpp"
 void UM_Map::Update()
 {
 //	sePrintf( SEPRINT_INFO, "%f\n", SE_Thread::Get_DT() );
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_A ) )
-		SE_Physics::Apply_Force( Vector3f( -0.25f, 0, 0 ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( -0.125f, 0, 0 ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_D ) )
-		SE_Physics::Apply_Force( Vector3f( +0.25f, 0, 0 ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( +0.125f, 0, 0 ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_W ) )
-		SE_Physics::Apply_Force( Vector3f( 0, 0, +0.25f ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( 0, 0, +0.125f ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_S ) )
-		SE_Physics::Apply_Force( Vector3f( 0, 0, -0.25f ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( 0, 0, -0.125f ), Test_Obj );
 
-	
-	if( SE_Input::Is_Down( SE_Input_Codes::KEY_K ) && 
-			abs( Get_Velocity3D( Test_Obj ).y() ) < 0.00001f )
-		SE_Physics::Apply_Force( Vector3f( 0, -10, 0 ), Test_Obj );
 
+	if( SE_Input::Is_Down( SE_Input_Codes::KEY_SPACE ) )
+	{
+		Vector3f Start = SE_Physics::Pos3D( Test_Obj );
+		Vector3f End = Start;
+		Start.y() += PLR_H / 2.f + .025f;
+		End.y() += PLR_H / 2.f + 0.125f;
+
+
+		if( SE_Physics::Ray_Test( Start, End ) )
+			SE_Physics::Apply_Force( Vector3f( 0, -50, 0 ), Test_Obj );
+
+//		sePrintf( SEPRINT_DEBUG, "Already set space %d->", SE_Input::Get( SE_Input_Codes::KEY_SPACE ) );
+		SE_Input::Set( SE_Input_Codes::KEY_SPACE, 0 );
+//		sePrintf( SEPRINT_DEBUG, "%d\n", SE_Input::Get( SE_Input_Codes::KEY_SPACE ) );
+	}
 
 	// Update Camera
 	Vector3f& Cam_Pos = SE_Render_Camera::Position(NULL);
@@ -298,8 +316,14 @@ uint UM_Map::Initialize( const std::vector<std::string>& mArgs )
 	for( uint x = 0; x < SIZE_X; x+=2 )
 		Map_Grid[1][SIZE_Y-1][x] = 1;
 
+	for( uint x = 1; x < SIZE_X; x+=2 )
+		Map_Grid[1][SIZE_Y-4][x] = 1;
+
 	for( uint x = 0; x < SIZE_X; x+=4 )
 		Map_Grid[0][SIZE_Y-2][x] = 1;
+
+	for( uint x = 1; x < SIZE_X; x+=4 )
+		Map_Grid[0][SIZE_Y-3][x] = 1;
 
 
 	Res::HIL_Test_Color = (Vector4f*)SE_HIL::Get( "test", "color" );
@@ -308,13 +332,13 @@ uint UM_Map::Initialize( const std::vector<std::string>& mArgs )
 	SE_Render_Camera::Rotation(NULL).x() = -180;
 	SE_Render_Camera::Rotation(NULL).x() += 15;
 
-	SE_Physics::Set_World_Bound_Y( SIZE_Y );/// 2.f );
-	SE_Physics::Set_World_Bound_Z( SIZE_Z );/// 2.f );
+	SE_Physics::Set_World_Bound_Y( SIZE_Y / 2.f + 1 );/// 2.f );
+	SE_Physics::Set_World_Bound_Z( SIZE_Z / 2.f + 1 );/// 2.f );
 
 	SE_Physics::Set_Gravity( 10 );
 
 	Create_Physics();
-	Test_Obj = SE_Physics::Gen_Object( Vector3f( 0, SIZE_Y / 2.f - 4, -.5f ), Vector3f( 0.25f, 1, 0.25f ), 10.f, SE_PHYS_SHAPE_CAPSULE );
+	Test_Obj = SE_Physics::Gen_Object( Vector3f( 0, SIZE_Y / 2.f - 5, -.5f ), Vector3f( PLR_W, PLR_H, PLR_L ), 10.f, SE_PHYS_SHAPE_CAPSULE );
 	SE_Physics::Set_Upright( Test_Obj );
 
 	return SE_SUCCESS;
@@ -328,6 +352,7 @@ uint UM_Map::Cleanup()
 uint UM_Map::Get_Resources( const std::vector<std::string>& mArgs )
 {
 	Res::Tex_Ground = Texture_Load( "resources/world/ground.png" );
+	Res::Tex_AI = Texture_Load( "resources/ai.png" );
 
 	return SE_SUCCESS;
 }

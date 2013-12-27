@@ -1,95 +1,95 @@
 Linux version 3.11.0-14-generic (buildd@allspice) (gcc version 4.8.1 (Ubuntu/Linaro 4.8.1-10ubuntu8) ) #21-Ubuntu SMP Tue Nov 12 17:04:55 UTC 2013
-nr_free_pages 100206
-nr_inactive_anon 182376
-nr_active_anon 408594
-nr_inactive_file 527356
-nr_active_file 549515
+nr_free_pages 120150
+nr_inactive_anon 208273
+nr_active_anon 402274
+nr_inactive_file 452923
+nr_active_file 468389
 nr_unevictable 0
 nr_mlock 0
-nr_anon_pages 574840
-nr_mapped 59370
-nr_file_pages 1094656
-nr_dirty 2367
+nr_anon_pages 595123
+nr_mapped 67921
+nr_file_pages 938413
+nr_dirty 808
 nr_writeback 0
-nr_slab_reclaimable 194681
-nr_slab_unreclaimable 12214
-nr_page_table_pages 6612
-nr_kernel_stack 542
+nr_slab_reclaimable 308656
+nr_slab_unreclaimable 12792
+nr_page_table_pages 6359
+nr_kernel_stack 547
 nr_unstable 0
 nr_bounce 0
-nr_vmscan_write 482206
-nr_vmscan_immediate_reclaim 118
+nr_vmscan_write 482212
+nr_vmscan_immediate_reclaim 121
 nr_writeback_temp 0
 nr_isolated_anon 0
 nr_isolated_file 0
-nr_shmem 11562
-nr_dirtied 45077441
-nr_written 44353670
-numa_hit 10162120179
+nr_shmem 11029
+nr_dirtied 48993849
+nr_written 48183443
+numa_hit 11447438475
 numa_miss 0
 numa_foreign 0
 numa_interleave 17232
-numa_local 10162120179
+numa_local 11447438475
 numa_other 0
 nr_anon_transparent_hugepages 0
 nr_free_cma 0
-nr_dirty_threshold 171729
-nr_dirty_background_threshold 85864
-pgpgin 103092715
-pgpgout 218759063
-pswpin 268293
-pswpout 482206
+nr_dirty_threshold 160125
+nr_dirty_background_threshold 80062
+pgpgin 104689723
+pgpgout 234835407
+pswpin 268552
+pswpout 482212
 pgalloc_dma 2
-pgalloc_dma32 4822086428
-pgalloc_normal 8409419168
+pgalloc_dma32 5041946643
+pgalloc_normal 9809124612
 pgalloc_movable 0
-pgfree 13231656307
-pgactivate 14147412
-pgdeactivate 4630778
-pgfault 8785485117
-pgmajfault 76296
+pgfree 14851330549
+pgactivate 15436039
+pgdeactivate 5007719
+pgfault 9919248028
+pgmajfault 79082
 pgrefill_dma 0
-pgrefill_dma32 1280553
-pgrefill_normal 3647939
+pgrefill_dma32 1454973
+pgrefill_normal 3871514
 pgrefill_movable 0
 pgsteal_kswapd_dma 0
-pgsteal_kswapd_dma32 4525901
-pgsteal_kswapd_normal 6524803
+pgsteal_kswapd_dma32 4648807
+pgsteal_kswapd_normal 7000190
 pgsteal_kswapd_movable 0
 pgsteal_direct_dma 0
-pgsteal_direct_dma32 1108790
-pgsteal_direct_normal 2121304
+pgsteal_direct_dma32 1148253
+pgsteal_direct_normal 2161082
 pgsteal_direct_movable 0
 pgscan_kswapd_dma 0
-pgscan_kswapd_dma32 4549290
-pgscan_kswapd_normal 6870783
+pgscan_kswapd_dma32 4672630
+pgscan_kswapd_normal 7349180
 pgscan_kswapd_movable 0
 pgscan_direct_dma 0
-pgscan_direct_dma32 1228054
-pgscan_direct_normal 2510287
+pgscan_direct_dma32 1267616
+pgscan_direct_normal 2550518
 pgscan_direct_movable 0
 pgscan_direct_throttle 0
 zone_reclaim_failed 0
 pginodesteal 337123
-slabs_scanned 22552448
-kswapd_inodesteal 200970
-kswapd_low_wmark_hit_quickly 15239
-kswapd_high_wmark_hit_quickly 14352
-pageoutrun 30401
-allocstall 8616
-pgrotated 484598
+slabs_scanned 23762048
+kswapd_inodesteal 203288
+kswapd_low_wmark_hit_quickly 27332
+kswapd_high_wmark_hit_quickly 25344
+pageoutrun 54021
+allocstall 9837
+pgrotated 484620
 numa_pte_updates 0
 numa_hint_faults 0
 numa_hint_faults_local 0
 numa_pages_migrated 0
-pgmigrate_success 48970
-pgmigrate_fail 0
-compact_migrate_scanned 70338
-compact_free_scanned 3070911
-compact_isolated 98505
-compact_stall 13
-compact_fail 0
-compact_success 13
+pgmigrate_success 135068
+pgmigrate_fail 352
+compact_migrate_scanned 244169
+compact_free_scanned 8562878
+compact_isolated 274699
+compact_stall 60
+compact_fail 18
+compact_success 42
 htlb_buddy_alloc_success 0
 htlb_buddy_alloc_fail 0
 unevictable_pgs_culled 4
@@ -106,18 +106,18 @@ thp_collapse_alloc_failed 0
 thp_split 0
 thp_zero_page_alloc 0
 thp_zero_page_alloc_failed 0
-cpu  35753853 556484 8235307 47567856 341802 180 116205 0 0 0
-cpu0 8707430 124360 2123726 36186328 266162 120 72738 0 0 0
-cpu1 8703645 142782 2098246 3774317 30310 8 8644 0 0 0
-cpu2 9521392 150683 1974243 3809599 21357 40 25210 0 0 0
-cpu3 8821384 138658 2039090 3797610 23971 11 9611 0 0 0
-intr 2873648747 26 33 0 0 0 0 0 0 1 0 0 0 49 0 0 0 34817083 995 0 0 0 0 0 4326719 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7557101 51841098 12 46 234 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-ctxt 5364542115
+cpu  39209813 611348 9027279 50211885 359366 216 132352 0 0 0
+cpu0 9591733 134594 2333380 40110646 278385 155 86774 0 0 0
+cpu1 9568097 156958 2297638 3352175 30777 10 10618 0 0 0
+cpu2 10375724 166323 2168418 3360684 33692 40 25320 0 0 0
+cpu3 9674257 153472 2227842 3388378 16511 11 9638 0 0 0
+intr 3177578442 26 35 0 0 0 0 0 0 1 0 0 0 52 0 0 0 40856259 1034 0 0 0 0 0 4677193 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7943650 57575795 237 49 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ctxt 5926940906
 btime 1386998599
-processes 296500
-procs_running 2
+processes 314299
+procs_running 1
 procs_blocked 0
-softirq 373728958 45 145170068 80499 51970069 7326146 45 35436900 38237546 609992 94897648
+softirq 410806556 48 158679245 89100 57710952 7687665 48 41696970 41259307 682431 103000790
  55 vboxnetctl
  56 vboxdrv
 232 kvm
@@ -138,37 +138,37 @@ softirq 373728958 45 145170068 80499 51970069 7326146 45 35436900 38237546 60999
 231 snapshot
  62 rfkill
  63 vga_arbiter
-1.60 1.62 1.55 3/543 7953
+0.64 0.63 0.50 2/548 25880
 MemTotal:        8067752 kB
-MemFree:          401204 kB
-Buffers:          458436 kB
-Cached:          3895296 kB
-SwapCached:        24892 kB
-Active:          3832264 kB
-Inactive:        2838928 kB
-Active(anon):    1634204 kB
-Inactive(anon):   729504 kB
-Active(file):    2198060 kB
-Inactive(file):  2109424 kB
+MemFree:          480448 kB
+Buffers:          828336 kB
+Cached:          2901028 kB
+SwapCached:        24288 kB
+Active:          3482652 kB
+Inactive:        2644784 kB
+Active(anon):    1609096 kB
+Inactive(anon):   833092 kB
+Active(file):    1873556 kB
+Inactive(file):  1811692 kB
 Unevictable:           0 kB
 Mlocked:               0 kB
 SwapTotal:      50331644 kB
-SwapFree:       50231124 kB
-Dirty:              9468 kB
+SwapFree:       50231876 kB
+Dirty:              3232 kB
 Writeback:             0 kB
-AnonPages:       2299360 kB
-Mapped:           237480 kB
-Shmem:             46248 kB
-Slab:             827580 kB
-SReclaimable:     778724 kB
-SUnreclaim:        48856 kB
-KernelStack:        4336 kB
-PageTables:        26448 kB
+AnonPages:       2379980 kB
+Mapped:           271684 kB
+Shmem:             44116 kB
+Slab:            1285792 kB
+SReclaimable:    1234624 kB
+SUnreclaim:        51168 kB
+KernelStack:        4376 kB
+PageTables:        25436 kB
 NFS_Unstable:          0 kB
 Bounce:                0 kB
 WritebackTmp:          0 kB
 CommitLimit:    54365520 kB
-Committed_AS:    5330672 kB
+Committed_AS:    5421264 kB
 VmallocTotal:   34359738367 kB
 VmallocUsed:      485964 kB
 VmallocChunk:   34359218684 kB
@@ -179,8 +179,8 @@ HugePages_Free:        0
 HugePages_Rsvd:        0
 HugePages_Surp:        0
 Hugepagesize:       2048 kB
-DirectMap4k:     7112068 kB
-DirectMap2M:     1239040 kB
+DirectMap4k:     7335300 kB
+DirectMap2M:     1015808 kB
 Architecture:          x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
@@ -209,7 +209,7 @@ model		: 42
 model name	: Intel(R) Core(TM) i5-2320 CPU @ 3.00GHz
 stepping	: 7
 microcode	: 0x28
-cpu MHz		: 2300.000
+cpu MHz		: 1600.000
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4
@@ -261,7 +261,7 @@ model		: 42
 model name	: Intel(R) Core(TM) i5-2320 CPU @ 3.00GHz
 stepping	: 7
 microcode	: 0x28
-cpu MHz		: 3001.000
+cpu MHz		: 1600.000
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 4

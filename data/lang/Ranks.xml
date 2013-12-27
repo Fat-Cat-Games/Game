@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lang lang="english" name="UM_Ranks">
+	<word name="badass">
+		<rank show="Bad-Ass" color="blue"/>
+	</word>
+	<word name="weaksauce">
+		<rank show="Weaksauce" color="white" dmg="0.5"/>
+	</word>
+</lang>
