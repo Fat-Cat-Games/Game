@@ -1,0 +1,6 @@
+kingdom / order / species
+body-type / stat-genre / name
+
+
+Ex
+human / mythical / banshee

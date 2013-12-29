@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<species show="Banshee">
+	<skills />
+	<basic health="100" magick="100">
+	</basic>
+	<attributes>
+	</attributes>
+	<advantages>
+	</advantages>
+	<abilities>
+	</abilitie>
+	<physical>
+	</physical>
+	<other>
+	</other>
+</species>
