@@ -64,6 +64,7 @@ void UM_Map::Turn( float d )
 //float Trans_X = 0.f;
 void UM_Map::Render()
 {
+//	sePrintf( SEPRINT_DEBUG, "render works\n" );
 //	SE_Render_Camera::Position(NULL).x() -= 0.01f;
 
 	segl_Set_Frustum_Far( 256 );
@@ -203,18 +204,20 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 #include "SE/os/Input.hpp"
 void UM_Map::Update()
 {
+	//sePrintf( SEPRINT_INFO, "%g\n", SE_Thread::Get_DT() );
+//	S_Engine::Debug_Print_Module( true, true, true );
 //	sePrintf( SEPRINT_INFO, "%f\n", SE_Thread::Get_DT() );
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_A ) )
-		SE_Physics::Apply_Force( Vector3f( -0.125f, 0, 0 ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( -1.f, 0, 0 ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_D ) )
-		SE_Physics::Apply_Force( Vector3f( +0.125f, 0, 0 ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( +1.f, 0, 0 ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_W ) )
-		SE_Physics::Apply_Force( Vector3f( 0, 0, +0.125f ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( 0, 0, +1.f ), Test_Obj );
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_S ) )
-		SE_Physics::Apply_Force( Vector3f( 0, 0, -0.125f ), Test_Obj );
+		SE_Physics::Apply_Force( Vector3f( 0, 0, -1.f ), Test_Obj );
 
 
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_SPACE ) )

@@ -31,7 +31,7 @@
 #include "SE/utility/UID.hpp"
 #include "SE/cbs/HI_Lang.hpp"
 #include "Map.hpp"
-
+#include "SE/utility/Timer.hpp"
 
 uint DF_Game::Module_Hook()
 {
@@ -56,6 +56,8 @@ uint DF_Game::Module_Hook()
 	SE_Physics::Set_Scene( SE_PHYS_SCENE_3 );
 
 	SE_Font::Set_Default( "The Abandoned Treasure.ttf" );
+
+	//Timer::Set_Sleep( false );
 
 	return SE_SUCCESS;
 }
