@@ -204,8 +204,6 @@ void UM_Map::Render_Cube( uint x, uint y, uint z )
 #include "SE/os/Input.hpp"
 void UM_Map::Update()
 {
-	//sePrintf( SEPRINT_INFO, "%g\n", SE_Thread::Get_DT() );
-//	S_Engine::Debug_Print_Module( true, true, true );
 //	sePrintf( SEPRINT_INFO, "%f\n", SE_Thread::Get_DT() );
 	if( SE_Input::Is_Down( SE_Input_Codes::KEY_A ) )
 		SE_Physics::Apply_Force( Vector3f( -1.f, 0, 0 ), Test_Obj );
