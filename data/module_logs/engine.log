@@ -1,0 +1,10 @@
+ (Win32) Pre-Alpha,  : , Jan  1 2014, 16:07:43
+Initializing Survivor Engine, 16 Module(s)...
+Initialized all modules
+Initializing threads...
+Thread started 'update-thread'
+Thread started 'render-thread'
+Initialized Threads: r=3, u=3
+Initializing user-space...
+Finished intializing, time: 6.78036 seconds
+
