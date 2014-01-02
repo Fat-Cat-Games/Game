@@ -1,5 +1,4 @@
 Initializing render module-8 segl...
-Successfully loaded shader shaders/glsl 400/default
-Successfully loaded shader shaders/mesh
+OpenGL Assertion Failed: ..\..\src\gl\Shader.cpp: 344: 500 invalid enumerant
 Loading image 'engine/error.png'...
 Successfully opened file 'engine/error.png"
